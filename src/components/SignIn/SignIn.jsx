@@ -1,6 +1,5 @@
-import React from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../fireBase/firebase-config.js"; // Убедись, что путь к файлу верный
+import { auth } from "../../fireBase/firebase-config.js";
 import styles from "./SignIn.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";

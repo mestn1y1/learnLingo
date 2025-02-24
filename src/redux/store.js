@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import { teacherReducer } from "./teachers/slice.js";
-import { favoritesReducer } from "./favorites/slice.js";
+import { favoritesReducer } from "./favotites/slice.js";
 
 const persistConfig = {
   key: "root",

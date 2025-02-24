@@ -1,0 +1,31 @@
+.statsList {
+  display: flex;
+  border: 2.5px dashed #f4c550;
+  border-radius: 30px;
+  width: 100%;
+  height: 116px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.statsListItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.statsListItem h3 {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 114%;
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+.statsListItem p {
+  width: 90px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: rgba(18, 20, 23, 0.7);
+}

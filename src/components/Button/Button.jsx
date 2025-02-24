@@ -1,10 +1,9 @@
-import React from "react";
 import styles from "./Button.module.css";
 
-export const Button = () => {
+export const Button = ({ text, onClick }) => {
   return (
-    <div className={styles.container}>
-      Button Component
-    </div>
+    <button className={styles.btn} onClick={onClick}>
+      {text}
+    </button>
   );
 };

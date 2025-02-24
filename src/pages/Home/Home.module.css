@@ -1,1 +1,46 @@
-.container { padding: 10px; border: 1px solid #ddd; }
+.container {
+  display: flex;
+  padding: 80px 20px 64px 64px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.wrap {
+  text-align: left;
+  padding-right: 112px;
+  padding-top: 98px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: #121417;
+  width: 548px;
+  margin-bottom: 32px;
+}
+
+.title span {
+  font-style: italic;
+  font-weight: 400;
+  background: #fbe9ba;
+  border-radius: 5px;
+}
+
+.description {
+  margin-bottom: 64px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  letter-spacing: -0.02em;
+  color: #121417;
+  width: 470px;
+}
+
+.img {
+  flex-shrink: 0;
+  border-radius: 30px;
+  width: 568px;
+  height: 530px;
+  background: url(/images/yellow.png);
+}

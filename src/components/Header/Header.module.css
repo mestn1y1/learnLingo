@@ -1,1 +1,30 @@
-.container { padding: 10px; border: 1px solid #ddd; }
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 14px 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo span {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+}
+
+.auth {
+  display: flex;
+  gap: 10px;
+}

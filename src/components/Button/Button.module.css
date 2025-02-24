@@ -1,1 +1,15 @@
-.container { padding: 10px; border: 1px solid #ddd; }
+.btn {
+  border-radius: 12px;
+  padding: 16px 80px;
+  width: 267px;
+  height: 60px;
+  background: #f4c550;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  color: #121417;
+}
+
+.btn:hover {
+  background: #ffdc86;
+}

@@ -5,5 +5,5 @@ import { getDatabase } from "firebase/database";
 import { config } from "./keysForFireBase";
 
 const app = initializeApp(config);
-export const database = getDatabase(app);
+export const db = getDatabase(app);
 export const auth = getAuth(app);

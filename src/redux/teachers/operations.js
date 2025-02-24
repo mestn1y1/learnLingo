@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { get, ref } from "firebase/database";
-import { database } from "../../fireBase/firebase-config";
+import { db } from "../../fireBase/firebase-config";
 
 export const fetchTeachers = createAsyncThunk(
   "/teachers/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const teachersRef = ref(database, "teachers");
+      const teachersRef = ref(db, "teachers");
       const snapshot = await get(teachersRef);
       const teachersData = [];
       snapshot.forEach((teacherSnapshot) => {

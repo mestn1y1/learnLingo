@@ -5,7 +5,8 @@ import { selectTeachers } from "../../redux/selectors";
 import { useEffect } from "react";
 import { fetchTeachers } from "../../redux/teachers/operations";
 import { useDispatch } from "react-redux";
-
+import SignUp from "../SignUp/SignUp";
+import SignIn from "../SignIn/SignIn";
 export default function App() {
   const dispatch = useDispatch();
 
@@ -16,5 +17,9 @@ export default function App() {
   const teachers = useSelector(selectTeachers);
   console.log(teachers);
 
-  return <div className={styles.container}>t</div>;
+  return (
+    <>
+      <h1>APP Component</h1>
+    </>
+  );
 }

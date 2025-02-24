@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "learn-lingo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,9 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.0",
     "firebase": "^11.3.1",
+    "formik": "^2.4.6",
+    "modern-normalize": "^3.0.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.5.2",
+    "react-loader-spinner": "^6.1.6",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.2.0",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

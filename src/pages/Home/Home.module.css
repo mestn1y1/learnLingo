@@ -1,8 +1,8 @@
 .container {
   display: flex;
-  padding: 80px 20px 64px 64px;
+  padding: 80px 64px 0px 64px;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 64px;
 }
 .wrap {
   text-align: left;

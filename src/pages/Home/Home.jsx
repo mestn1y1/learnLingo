@@ -1,6 +1,7 @@
 import styles from "./Home.module.css";
 import { Button } from "../../components/Button/Button";
 import Stats from "../../components/Stats/Stats";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <>
@@ -15,7 +16,9 @@ export default function Home() {
             highly qualified and experienced tutors.
           </p>
 
-          <Button text="Get started" />
+          <Link to="/teachers">
+            <Button text="Get started" />
+          </Link>
         </div>
         <div className={styles.img}></div>
       </div>

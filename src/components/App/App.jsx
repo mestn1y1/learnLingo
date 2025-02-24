@@ -1,9 +1,6 @@
 import styles from "./App.module.css";
 import { Suspense, lazy, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchTeachers } from "../../redux/teachers/operations";
-import { selectTeachers } from "../../redux/selectors";
 import Header from "../Header/Header";
 // import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -15,15 +12,6 @@ const NotFoundPage = lazy(() =>
 );
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTeachers());
-  }, [dispatch]);
-
-  const teachers = useSelector(selectTeachers);
-  console.log(teachers);
-
   return (
     <>
       <Header />

@@ -1,0 +1,47 @@
+
+Можно настроить Plop.js для генерации компонентов командой.
+
+npm install --save-dev plop
+Создай файл plopfile.js в корне проекта:
+
+export default function (plop) {
+  plop.setGenerator("component", {
+    description: "Создать React-компонент",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "Введите название компонента:",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "src/components/{{pascalCase name}}/{{pascalCase name}}.jsx",
+        templateFile: "plop-templates/Component.hbs", // Указываем .jsx шаблон
+      },
+      {
+        type: "add",
+        path: "src/components/{{pascalCase name}}/{{pascalCase name}}.module.css",
+        templateFile: "plop-templates/Component.module.hbs", // Если CSS всё-таки остаётся в hbs
+      },
+    ],
+  });
+}
+
+Создай шаблон plop-templates/Component.jsx.hbs:
+
+import React from "react"; import styles from "./{{pascalCase
+  name
+}}.module.css"; export default function
+{{pascalCase name}}
+() { return (
+<div className="{styles.container}">
+  {{pascalCase name}}
+  Component
+</div>
+); };
+
+
+npx plop component
+🔹 Это создаст Component.jsx и Component.module.css.

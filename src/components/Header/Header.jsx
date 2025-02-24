@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
-        <img src="/public/images/ukraine.png" alt="" />
+        <img src="/images/ukraine.png" alt="logo" />
         <span>LearnLingo</span>
       </Link>
       <nav>

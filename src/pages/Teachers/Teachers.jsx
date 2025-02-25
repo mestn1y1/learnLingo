@@ -15,7 +15,7 @@ export default function Teachers() {
   }, [dispatch]);
 
   return (
-    <section>
+    <section className={styles.sectionTeachers}>
       <TeachersList teachers={teachers} />
     </section>
   );

@@ -5,6 +5,7 @@
   flex-shrink: 0;
   width: 120px; /* фиксированная ширина */
   height: 120px;
+  margin-right: 48px;
 }
 
 .avatarImg {
@@ -14,10 +15,15 @@
 
 .headerInfo {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 968px;
 }
 .infoList {
   display: flex;
   gap: 16px;
+  align-items: center;
+  margin-left: auto;
 }
 
 .infoItem {
@@ -26,6 +32,15 @@
   justify-content: center;
   gap: 8px;
   border-right: 1px rgba(18, 20, 23, 0.2);
+}
+
+.name {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  color: #121417;
+  margin-top: 8px;
+  margin-bottom: 32px;
 }
 
 .infoItem p {
@@ -38,6 +53,28 @@
   color: #38cd3e;
 }
 
+.language {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+.subInfo {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+  margin-bottom: 8px;
+}
+
+.subInfo span {
+  color: #121417;
+}
+
+.spanUnderscore {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
 .icon {
   fill: transparent;
   stroke: black;
@@ -51,20 +88,49 @@
 }
 
 .iconHeart {
-  width: 16px;
-  height: 16px;
+  width: 26px;
+  height: 26px;
   fill: transparent;
   stroke: black;
+}
+
+.iconHeartActive {
+  stroke: none;
+  fill: #f4c550;
+  width: 26px;
+  height: 26px;
 }
 
 .btnHeart {
   border: none;
   background: transparent;
+  margin-left: 64px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.readMoreBtn {
+  margin-top: 16px;
+  border: none;
+  background: transparent;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
+}
+
+.readMoreBtn:hover {
+  color: #f4c550;
 }
 
 .languageLevelList {
   display: flex;
   gap: 8px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .languageLevelList li {
@@ -77,4 +143,48 @@
   padding: 8px 12px;
   width: auto;
   height: 32px;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  gap: 32px;
+}
+
+.reviewAvatar {
+  width: 44px;
+  border-radius: 50%;
+}
+
+.reviewWrap {
+  display: flex;
+  gap: 12px;
+}
+.reviewerName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+  margin-bottom: 2px;
+}
+
+.ratingWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ratingWrap span {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #121417;
+}
+.reviewComment {
+  margin-top: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
 }

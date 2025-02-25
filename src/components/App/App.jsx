@@ -1,7 +1,11 @@
 import styles from "./App.module.css";
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
+import { ModalWrap } from "../ModalWrap/ModalWrap";
+import SignIn from "../SignIn/SignIn";
+import SignUp from "../SignUp/SignUp";
+
 // import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Home = lazy(() => import("../../pages/Home/Home"));
@@ -12,9 +16,21 @@ const NotFoundPage = lazy(() =>
 );
 
 export default function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+
+  const openModal = (type) => {
+    setModalType(type);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalType(null);
+  };
   return (
     <>
-      <Header />
+      <Header openModal={openModal} />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -30,6 +46,10 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <ModalWrap isOpen={isModalOpen} handleClose={closeModal}>
+        {modalType === "register" && <SignUp handleClose={closeModal} />}
+        {modalType === "login" && <SignIn handleClose={closeModal} />}
+      </ModalWrap>
     </>
   );
 }

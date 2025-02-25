@@ -19,8 +19,8 @@ const SignupSchema = Yup.object().shape({
     .required("Required"),
 });
 
-export default function SignUp() {
-  const handleSubmit = async (values) => {
+export default function SignUp({ handleClose }) {
+  const handleSubmit = async (values, actions) => {
     const { name, email, password } = values;
 
     try {
@@ -78,10 +78,7 @@ export default function SignUp() {
             </div>
 
             <button type="submit">Sign Up</button>
-            <button
-              type="button"
-              onClick={() => console.log("Close button clicked")}
-            >
+            <button type="button" onClick={handleClose}>
               Close
             </button>
           </Form>

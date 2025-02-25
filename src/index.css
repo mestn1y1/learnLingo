@@ -7,7 +7,7 @@
 
   color-scheme: light dark;
   color: rgba(24, 22, 22, 0.87);
-  background-color: #ffffff;
+  background-color: #eeeeee;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,6 +21,9 @@ body {
   font-weight: 400;
   line-height: 1.5;
   box-sizing: border-box;
+}
+body.no-scroll {
+  overflow: hidden;
 }
 
 h1,

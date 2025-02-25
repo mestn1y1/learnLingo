@@ -13,7 +13,7 @@ const SigninSchema = Yup.object().shape({
     .required("Required"),
 });
 
-export default function SignIn() {
+export default function SignIn({ handleClose }) {
   const handleSubmit = async (values) => {
     const { email, password } = values;
 
@@ -52,10 +52,7 @@ export default function SignIn() {
             </div>
 
             <button type="submit">Sign In</button>
-            <button
-              type="button"
-              onClick={() => console.log("Close button clicked")}
-            >
+            <button type="button" onClick={handleClose}>
               Close
             </button>
           </Form>

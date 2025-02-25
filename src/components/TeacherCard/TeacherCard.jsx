@@ -5,10 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/favorites/slice.js";
 import styles from "./TeacherCard.module.css";
 import { selectFavorites } from "../../redux/selectors.js";
+import { ModalWrap } from "../ModalWrap/ModalWrap.jsx";
+import Booking from "../Booking/Booking.jsx";
 
 export default function TeacherCard({ teacher }) {
   const [isExpanded, setIsExpanded] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
 
@@ -29,6 +33,7 @@ export default function TeacherCard({ teacher }) {
   return (
     <>
       <div className={styles.avatarImgWrap}>
+        <Icon iconName="point" className={styles.iconPoint} />
         <img
           src={teacher.avatar_url}
           alt="avatar_url"
@@ -122,8 +127,11 @@ export default function TeacherCard({ teacher }) {
             <li key={index}>#{level}</li>
           ))}
         </ul>
-        {isExpanded && <Button text="Book trial lesson" />}
+        {isExpanded && <Button text="Book trial lesson" onClick={openModal} />}
       </div>
+      <ModalWrap isOpen={isModalOpen} handleClose={closeModal}>
+        <Booking handleClose={closeModal} teacher={teacher} />
+      </ModalWrap>
     </>
   );
 }

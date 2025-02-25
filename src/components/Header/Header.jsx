@@ -1,34 +1,44 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-export default function Header() {
+
+export default function Header({ openModal }) {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
         <img src="/images/ukraine.png" alt="logo" />
         <span>LearnLingo</span>
       </Link>
+
       <nav>
         <ul className={styles.nav}>
           <li>
-            <Link>Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link>Teachers</Link>
+            <Link to="/teachers">Teachers</Link>
           </li>
           <li>
-            <Link>Favorite</Link>
+            <Link to="/favorite">Favorite</Link>
           </li>
         </ul>
       </nav>
+
       <ul className={styles.auth}>
         <li>
-          <Link>SignIn</Link>
+          <button className={styles.authBtn} onClick={() => openModal("login")}>
+            Sign In
+          </button>
         </li>
         <li>
-          <Link>SignUp</Link>
+          <button
+            className={styles.authBtn}
+            onClick={() => openModal("register")}
+          >
+            Sign Up
+          </button>
         </li>
         <li>
-          <Link>LogOut</Link>
+          <button className={styles.authBtn}>Log Out</button>
         </li>
       </ul>
     </header>

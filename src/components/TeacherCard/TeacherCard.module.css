@@ -6,10 +6,12 @@
   width: 120px; /* фиксированная ширина */
   height: 120px;
   margin-right: 48px;
+  position: relative;
 }
 
 .avatarImg {
   width: 96px;
+  height: 96px;
   border-radius: 50%;
 }
 
@@ -75,6 +77,14 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
+.iconPoint {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 20px;
+  right: 16px;
+}
+
 .icon {
   fill: transparent;
   stroke: black;

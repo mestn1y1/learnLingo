@@ -7,7 +7,7 @@ import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import { Toaster } from "react-hot-toast";
 
-// import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Home = lazy(() => import("../../pages/Home/Home"));
 const Teachers = lazy(() => import("../../pages/Teachers/Teachers"));
@@ -36,14 +36,14 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/teachers" element={<Teachers />} />
-          {/* <Route
+          <Route
             path="/favorite"
             element={
               <PrivateRoute>
                 <Favorite />
               </PrivateRoute>
             }
-          /> */}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

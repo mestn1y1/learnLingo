@@ -21,7 +21,6 @@ export default function TeacherCard({ teacher }) {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const authUser = useAuth();
-  console.log(authUser);
   const isFavorite = favorites.includes(teacher.id);
 
   const handleBookingSubmit = (values) => {
@@ -35,12 +34,12 @@ export default function TeacherCard({ teacher }) {
     }
 
     if (isFavorite) {
-      await dispatch(
+      dispatch(
         removeFavoriteFromDB({ userId: authUser.uid, teacherId: teacher.id })
       );
       toast.success("Removed from favorites");
     } else {
-      await dispatch(
+      dispatch(
         addFavoriteToDB({ userId: authUser.uid, teacherId: teacher.id })
       );
       toast.success("Added to favorites");

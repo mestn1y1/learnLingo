@@ -8,11 +8,11 @@ import {
 } from "../../src/redux/favorites/operations";
 
 export const useAuth = () => {
-  const [authUser, setAuthUser] = useState(null);
+  const [authUser, setAuthUser] = useState(undefined);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
         dispatch(fetchFavorites(user.uid));
@@ -22,9 +22,7 @@ export const useAuth = () => {
       }
     });
 
-    return () => {
-      listen();
-    };
+    return () => unsubscribe();
   }, [dispatch]);
 
   return authUser;

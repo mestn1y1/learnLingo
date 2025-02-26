@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTeachers } from "../../redux/teachers/operations";
 import { selectIsLoading, selectTeachers } from "../../redux/selectors";
 import TeachersList from "../../components/TeachersList/TeachersList";
+import Loader from "../../components/Loader/Loader";
 
 export default function Teachers({ authUser }) {
   const dispatch = useDispatch();
@@ -16,7 +17,11 @@ export default function Teachers({ authUser }) {
 
   return (
     <section className={styles.sectionTeachers}>
-      <TeachersList teachers={teachers} authUser={authUser} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <TeachersList teachers={teachers} authUser={authUser} />
+      )}
     </section>
   );
 }

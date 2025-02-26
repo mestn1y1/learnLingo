@@ -1,10 +1,10 @@
 import styles from "./Button.module.css";
-import classNames from "classnames"; // подключаем библиотеку classnames для удобного объединения классов
+import classNames from "classnames";
 
 export const Button = ({ text, onClick, className, type }) => {
   return (
     <button
-      className={classNames(className, styles.btn)} // добавляем переданный класс сюда
+      className={classNames(className, styles.btn)}
       onClick={onClick}
       type={type}
     >

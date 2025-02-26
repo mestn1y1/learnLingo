@@ -1,5 +1,4 @@
-import styles from "./App.module.css";
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import { ModalWrap } from "../ModalWrap/ModalWrap";
@@ -8,6 +7,7 @@ import SignUp from "../SignUp/SignUp";
 import { Toaster } from "react-hot-toast";
 import { useAuth } from "../../hooks/useAuth";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Loader from "../Loader/Loader";
 
 const Home = lazy(() => import("../../pages/Home/Home"));
 const Teachers = lazy(() => import("../../pages/Teachers/Teachers"));
@@ -33,7 +33,7 @@ export default function App() {
   return (
     <>
       <Header openModal={openModal} />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/teachers" element={<Teachers />} />

@@ -4,6 +4,7 @@ import { Icon } from "../Icons/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/favorites/slice.js";
 import styles from "./TeacherCard.module.css";
+import toast from "react-hot-toast";
 import { selectFavorites } from "../../redux/selectors.js";
 import { ModalWrap } from "../ModalWrap/ModalWrap.jsx";
 import Booking from "../Booking/Booking.jsx";
@@ -17,6 +18,10 @@ export default function TeacherCard({ teacher }) {
   const favorites = useSelector(selectFavorites);
 
   const isFavorite = favorites.some((fav) => fav.id === teacher.id);
+
+  const handleBookingSubmit = (values) => {
+    toast.success("Your booking has been received! We will contact you soon.");
+  };
 
   const toggleFavorite = () => {
     if (isFavorite) {
@@ -130,7 +135,11 @@ export default function TeacherCard({ teacher }) {
         {isExpanded && <Button text="Book trial lesson" onClick={openModal} />}
       </div>
       <ModalWrap isOpen={isModalOpen} handleClose={closeModal}>
-        <Booking handleClose={closeModal} teacher={teacher} />
+        <Booking
+          handleClose={closeModal}
+          teacher={teacher}
+          onSubmit={handleBookingSubmit}
+        />
       </ModalWrap>
     </>
   );

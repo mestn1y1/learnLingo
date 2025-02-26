@@ -1,9 +1,14 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../fireBase/firebase-config.js";
 import styles from "./SignIn.module.css";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Icon } from "../Icons/Icons.jsx";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Toaster, toast } from "react-hot-toast";
+import { Button } from "../Button/Button.jsx";
 
 const SigninSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -14,6 +19,11 @@ const SigninSchema = Yup.object().shape({
 });
 
 export default function SignIn({ handleClose }) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
   const handleSubmit = async (values) => {
     const { email, password } = values;
 
@@ -26,9 +36,15 @@ export default function SignIn({ handleClose }) {
   };
 
   return (
-    <div>
-      <h1>Sign In</h1>
-      <p>Please enter your credentials to log in.</p>
+    <div className={styles.container}>
+      <button type="button" onClick={handleClose} className={styles.closeBtn}>
+        <Icon iconName="close" className={styles.iconClose} />
+      </button>
+      <h1 className={styles.title}>Log In</h1>
+      <p className={styles.description}>
+        Welcome back! Please enter your credentials to access your account and
+        continue your search for an teacher.
+      </p>
       <Formik
         initialValues={{
           email: "",
@@ -40,21 +56,45 @@ export default function SignIn({ handleClose }) {
         {() => (
           <Form>
             <div>
-              <label htmlFor="email">Email</label>
-              <Field name="email" type="email" />
-              <ErrorMessage name="email" component="div" />
+              <label htmlFor="email"></label>
+              <ErrorMessage
+                name="email"
+                component="span"
+                className={styles.error}
+              />
+              <Field
+                name="email"
+                type="email"
+                className={styles.input}
+                placeholder="Email"
+              />
             </div>
 
-            <div>
-              <label htmlFor="password">Password</label>
-              <Field name="password" type="password" />
-              <ErrorMessage name="password" component="div" />
+            <div className={styles.passwordContainer}>
+              <label htmlFor="password"></label>
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={styles.error}
+              />
+              <div className={styles.inputWrapper}>
+                <Field
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  className={styles.input}
+                  placeholder="Password"
+                />
+                <button
+                  type="button"
+                  className={styles.toggleButton}
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <FaEye /> : <FaEyeSlash />}
+                </button>
+              </div>
             </div>
 
-            <button type="submit">Sign In</button>
-            <button type="button" onClick={handleClose}>
-              Close
-            </button>
+            <Button text="Sign In" className={styles.signInBtn} />
           </Form>
         )}
       </Formik>

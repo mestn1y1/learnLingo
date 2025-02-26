@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import { ModalWrap } from "../ModalWrap/ModalWrap";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
+import { Toaster } from "react-hot-toast";
 
 // import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -49,7 +50,8 @@ export default function App() {
       <ModalWrap isOpen={isModalOpen} handleClose={closeModal}>
         {modalType === "register" && <SignUp handleClose={closeModal} />}
         {modalType === "login" && <SignIn handleClose={closeModal} />}
-      </ModalWrap>
+      </ModalWrap>{" "}
+      <Toaster position="top-right" />
     </>
   );
 }

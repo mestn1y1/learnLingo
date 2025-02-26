@@ -1,1 +1,90 @@
-.container { padding: 10px; border: 1px solid #ddd; }
+.container {
+  border-radius: 30px;
+  width: 565px;
+  height: 100%;
+  background: #fff;
+  padding: 64px;
+  position: relative;
+}
+.signInBtn {
+  width: 438px;
+  margin-top: 22px;
+}
+
+.closeBtn {
+  border: none;
+  background: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.iconClose {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: #000;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 40px;
+}
+
+.input {
+  border: 1px solid rgba(23, 18, 22, 0.1);
+  padding: 16px 16px 18px;
+  width: 438px;
+  height: 54px;
+  outline: none;
+  margin-bottom: 18px;
+  border-radius: 12px;
+}
+
+input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: #121417;
+}
+
+.passwordContainer {
+  position: relative;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggleButton {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+}
+
+.toggleButton:hover {
+  color: #333;
+}
+
+.error {
+  color: red;
+}

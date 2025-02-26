@@ -3,9 +3,12 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import { auth, db } from "../../fireBase/firebase-config.js";
 import styles from "./SignUp.module.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Toaster, toast } from "react-hot-toast";
+import { Button } from "../Button/Button.jsx";
+import { Icon } from "../Icons/Icons.jsx";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -20,6 +23,12 @@ const SignupSchema = Yup.object().shape({
 });
 
 export default function SignUp({ handleClose }) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   const handleSubmit = async (values, actions) => {
     const { name, email, password } = values;
 
@@ -38,6 +47,7 @@ export default function SignUp({ handleClose }) {
       });
 
       toast.success("User created successfully!");
+      actions.resetForm();
     } catch (error) {
       console.error("Error creating user:", error);
       toast.error("Apologies, an error occurred. Please try again later!");
@@ -45,9 +55,15 @@ export default function SignUp({ handleClose }) {
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
+    <div className={styles.container}>
+      <button type="button" onClick={handleClose} className={styles.closeBtn}>
+        <Icon iconName="close" className={styles.iconClose} />
+      </button>
+      <h1 className={styles.title}>Registration</h1>
+      <p className={styles.description}>
+        Thank you for your interest in our platform! In order to register, we
+        need some information. Please provide us with the following information
+      </p>
       <Formik
         initialValues={{
           name: "",
@@ -60,27 +76,60 @@ export default function SignUp({ handleClose }) {
         {() => (
           <Form>
             <div>
-              <label htmlFor="name">Name</label>
-              <Field name="name" type="text" />
-              <ErrorMessage name="name" component="div" />
+              <label htmlFor="name"></label>
+              <ErrorMessage
+                name="name"
+                component="span"
+                className={styles.error}
+              />
+              <Field
+                name="name"
+                type="text"
+                className={styles.input}
+                placeholder="Name"
+              />
             </div>
 
             <div>
-              <label htmlFor="email">Email</label>
-              <Field name="email" type="email" />
-              <ErrorMessage name="email" component="div" />
+              <label htmlFor="email"></label>
+              <ErrorMessage
+                name="email"
+                component="span"
+                className={styles.error}
+              />
+              <Field
+                name="email"
+                type="email"
+                className={styles.input}
+                placeholder="Email"
+              />
             </div>
 
-            <div>
-              <label htmlFor="password">Password</label>
-              <Field name="password" type="password" />
-              <ErrorMessage name="password" component="div" />
+            <div className={styles.passwordContainer}>
+              <label htmlFor="password"></label>
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={styles.error}
+              />
+              <div className={styles.inputWrapper}>
+                <Field
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  className={styles.input}
+                  placeholder="Password"
+                />
+                <button
+                  type="button"
+                  className={styles.toggleButton}
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <FaEye /> : <FaEyeSlash />}
+                </button>
+              </div>
             </div>
 
-            <button type="submit">Sign Up</button>
-            <button type="button" onClick={handleClose}>
-              Close
-            </button>
+            <Button text="SignUp" type="submit" className={styles.signUpBtn} />
           </Form>
         )}
       </Formik>

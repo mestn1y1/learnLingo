@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { CiLogin, CiLogout } from "react-icons/ci";
 import styles from "./Header.module.css";
+import clsx from "clsx";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/selectors";
 
 export default function Header({ openModal }) {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
@@ -12,34 +18,68 @@ export default function Header({ openModal }) {
       <nav>
         <ul className={styles.nav}>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                clsx(styles.link, { [styles.activeLink]: isActive })
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/teachers">Teachers</Link>
+            <NavLink
+              to="/teachers"
+              className={({ isActive }) =>
+                clsx(styles.link, { [styles.activeLink]: isActive })
+              }
+            >
+              Teachers
+            </NavLink>
           </li>
-          <li>
-            <Link to="/favorite">Favorite</Link>
-          </li>
+          {isLoggedIn && (
+            <li>
+              <NavLink
+                to="/favorite"
+                className={({ isActive }) =>
+                  clsx(styles.link, { [styles.activeLink]: isActive })
+                }
+              >
+                Favorite
+              </NavLink>
+            </li>
+          )}
         </ul>
       </nav>
 
       <ul className={styles.auth}>
-        <li>
-          <button className={styles.authBtn} onClick={() => openModal("login")}>
-            Sign In
-          </button>
-        </li>
-        <li>
-          <button
-            className={styles.authBtn}
-            onClick={() => openModal("register")}
-          >
-            Sign Up
-          </button>
-        </li>
-        <li>
-          <button className={styles.authBtn}>Log Out</button>
-        </li>
+        {!isLoggedIn ? (
+          <>
+            <li>
+              <button
+                className={styles.loginBtn}
+                onClick={() => openModal("login")}
+              >
+                <CiLogin size={20} color="#F4C550" />
+                Log in
+              </button>
+            </li>
+            <li>
+              <button
+                className={styles.authBtn}
+                onClick={() => openModal("register")}
+              >
+                Sign Up
+              </button>
+            </li>
+          </>
+        ) : (
+          <li>
+            <button className={styles.logoutBtn}>
+              <CiLogout size={20} />
+            </button>
+          </li>
+        )}
       </ul>
     </header>
   );

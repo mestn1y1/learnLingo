@@ -3,7 +3,7 @@
   border: 3px solid #fbe9ba;
   border-radius: 50%;
   flex-shrink: 0;
-  width: 120px; /* фиксированная ширина */
+  width: 120px;
   height: 120px;
   margin-right: 48px;
   position: relative;
@@ -102,6 +102,10 @@
   height: 26px;
   fill: transparent;
   stroke: black;
+}
+
+.iconHeart:hover {
+  stroke: #f4c550;
 }
 
 .iconHeartActive {

@@ -2,7 +2,9 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 14px 64px;
+  align-items: center;
+  padding-right: 64px;
+  padding-left: 64px;
 }
 
 .logo {
@@ -24,7 +26,65 @@
   gap: 10px;
 }
 
+.link {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #121417;
+}
+
+.link:hover,
+.activeLink {
+  color: #f4c550;
+}
+
 .auth {
   display: flex;
+  align-items: center;
   gap: 10px;
+}
+
+.authBtn {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+  background: #121417;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #fff;
+}
+
+.authBtn:hover {
+  color: #f4c550;
+}
+.loginBtn {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #121417;
+  gap: 8px;
+}
+
+.loginBtn:hover {
+  color: #f4c550;
+}
+
+.logoutBtn {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+.logoutBtn:hover {
+  color: #f4c550;
 }

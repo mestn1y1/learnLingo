@@ -7,7 +7,7 @@ import { Icon } from "../Icons/Icons.jsx";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { Button } from "../Button/Button.jsx";
 
 const SigninSchema = Yup.object().shape({
@@ -98,7 +98,6 @@ export default function SignIn({ handleClose }) {
           </Form>
         )}
       </Formik>
-      <Toaster />
     </div>
   );
 }

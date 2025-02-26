@@ -10,4 +10,6 @@ export const selectIsLoadingFav = (state) => state.favorites.isLoading;
 
 export const selectErrorFav = (state) => state.favorites.error;
 
-export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+export const selectAuthUser = (state) => state.auth.user;
+
+export const selectAuthLoading = (state) => state.auth.isLoading;

@@ -2,11 +2,15 @@ import { Link, NavLink } from "react-router-dom";
 import { CiLogin, CiLogout } from "react-icons/ci";
 import styles from "./Header.module.css";
 import clsx from "clsx";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/selectors";
-
+import { signOut } from "firebase/auth";
+import { auth } from "../../fireBase/firebase-config";
+import { useAuth } from "../../hooks/useAuth";
 export default function Header({ openModal }) {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const handleLogOUt = () => {
+    signOut(auth);
+  };
+
+  const authUser = useAuth();
 
   return (
     <header className={styles.header}>
@@ -37,7 +41,7 @@ export default function Header({ openModal }) {
               Teachers
             </NavLink>
           </li>
-          {isLoggedIn && (
+          {authUser && (
             <li>
               <NavLink
                 to="/favorite"
@@ -53,7 +57,7 @@ export default function Header({ openModal }) {
       </nav>
 
       <ul className={styles.auth}>
-        {!isLoggedIn ? (
+        {!authUser ? (
           <>
             <li>
               <button
@@ -69,13 +73,13 @@ export default function Header({ openModal }) {
                 className={styles.authBtn}
                 onClick={() => openModal("register")}
               >
-                Sign Up
+                Registration
               </button>
             </li>
           </>
         ) : (
           <li>
-            <button className={styles.logoutBtn}>
+            <button onClick={handleLogOUt} className={styles.logoutBtn}>
               <CiLogout size={20} />
             </button>
           </li>

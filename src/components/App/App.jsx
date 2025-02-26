@@ -1,12 +1,12 @@
 import styles from "./App.module.css";
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import { ModalWrap } from "../ModalWrap/ModalWrap";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import { Toaster } from "react-hot-toast";
-
+import { useAuth } from "../../hooks/useAuth";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Home = lazy(() => import("../../pages/Home/Home"));
@@ -19,7 +19,6 @@ const NotFoundPage = lazy(() =>
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
-
   const openModal = (type) => {
     setModalType(type);
     setIsModalOpen(true);
@@ -29,6 +28,8 @@ export default function App() {
     setIsModalOpen(false);
     setModalType(null);
   };
+
+  const authUser = useAuth();
   return (
     <>
       <Header openModal={openModal} />
@@ -39,7 +40,7 @@ export default function App() {
           <Route
             path="/favorite"
             element={
-              <PrivateRoute>
+              <PrivateRoute authUser={authUser}>
                 <Favorite />
               </PrivateRoute>
             }

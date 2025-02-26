@@ -5,7 +5,7 @@ import { fetchTeachers } from "../../redux/teachers/operations";
 import { selectIsLoading, selectTeachers } from "../../redux/selectors";
 import TeachersList from "../../components/TeachersList/TeachersList";
 
-export default function Teachers() {
+export default function Teachers({ authUser }) {
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
   const loading = useSelector(selectIsLoading);
@@ -16,7 +16,7 @@ export default function Teachers() {
 
   return (
     <section className={styles.sectionTeachers}>
-      <TeachersList teachers={teachers} />
+      <TeachersList teachers={teachers} authUser={authUser} />
     </section>
   );
 }

@@ -1,9 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/selectors";
-
-export default function PrivateRoute({ children }) {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  return isLoggedIn ? children : <Navigate to="/" replace />;
+import { useAuth } from "../../hooks/useAuth";
+export default function PrivateRoute({ children, authUser }) {
+  return authUser ? children : <Navigate to="/" replace />;
 }

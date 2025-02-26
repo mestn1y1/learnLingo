@@ -24,14 +24,19 @@ export default function SignIn({ handleClose }) {
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
+
   const handleSubmit = async (values) => {
     const { email, password } = values;
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
+
       toast.success("Successfully signed in!");
+      handleClose();
     } catch (error) {
-      toast.error("Invalid email or password. Please try again.");
+      toast.error(
+        error.message || "Invalid email or password. Please try again."
+      );
     }
   };
 
@@ -43,7 +48,7 @@ export default function SignIn({ handleClose }) {
       <h1 className={styles.title}>Log In</h1>
       <p className={styles.description}>
         Welcome back! Please enter your credentials to access your account and
-        continue your search for an teacher.
+        continue your search for a teacher.
       </p>
       <Formik
         initialValues={{
@@ -94,7 +99,7 @@ export default function SignIn({ handleClose }) {
               </div>
             </div>
 
-            <Button text="Sign In" className={styles.signInBtn} />
+            <Button text="Sign In" className={styles.signInBtn} type="submit" />
           </Form>
         )}
       </Formik>

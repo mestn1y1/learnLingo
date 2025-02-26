@@ -9,7 +9,6 @@ import * as Yup from "yup";
 import { Toaster, toast } from "react-hot-toast";
 import { Button } from "../Button/Button.jsx";
 import { Icon } from "../Icons/Icons.jsx";
-
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
@@ -48,6 +47,7 @@ export default function SignUp({ handleClose }) {
 
       toast.success("User created successfully!");
       actions.resetForm();
+      handleClose();
     } catch (error) {
       console.error("Error creating user:", error);
       toast.error("Apologies, an error occurred. Please try again later!");

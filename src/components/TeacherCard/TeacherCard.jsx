@@ -2,12 +2,16 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import { Icon } from "../Icons/Icons";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavorite, removeFavorite } from "../../redux/favorites/slice.js";
+import {
+  removeFavoriteFromDB,
+  addFavoriteToDB,
+} from "../../redux/favorites/operations.js";
 import styles from "./TeacherCard.module.css";
 import toast from "react-hot-toast";
 import { selectFavorites } from "../../redux/selectors.js";
 import { ModalWrap } from "../ModalWrap/ModalWrap.jsx";
 import Booking from "../Booking/Booking.jsx";
+import { useAuth } from "../../hooks/useAuth.jsx";
 
 export default function TeacherCard({ teacher }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -16,18 +20,30 @@ export default function TeacherCard({ teacher }) {
   const closeModal = () => setIsModalOpen(false);
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
-
-  const isFavorite = favorites.some((fav) => fav.id === teacher.id);
+  const authUser = useAuth();
+  console.log(authUser);
+  const isFavorite = favorites.includes(teacher.id);
 
   const handleBookingSubmit = (values) => {
     toast.success("Your booking has been received! We will contact you soon.");
   };
 
-  const toggleFavorite = () => {
+  const onSwitchFavorite = async () => {
+    if (!authUser) {
+      toast.error("At first, you must log in", {});
+      return;
+    }
+
     if (isFavorite) {
-      dispatch(removeFavorite(teacher.id));
+      await dispatch(
+        removeFavoriteFromDB({ userId: authUser.uid, teacherId: teacher.id })
+      );
+      toast.success("Removed from favorites");
     } else {
-      dispatch(addFavorite(teacher));
+      await dispatch(
+        addFavoriteToDB({ userId: authUser.uid, teacherId: teacher.id })
+      );
+      toast.success("Added to favorites");
     }
   };
 
@@ -69,7 +85,7 @@ export default function TeacherCard({ teacher }) {
               </p>
             </li>
           </ul>
-          <button className={styles.btnHeart} onClick={toggleFavorite}>
+          <button className={styles.btnHeart} onClick={onSwitchFavorite}>
             <Icon
               iconName="heart"
               className={isFavorite ? styles.iconHeartActive : styles.iconHeart}

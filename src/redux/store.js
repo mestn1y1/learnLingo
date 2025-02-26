@@ -12,7 +12,7 @@ import {
 } from "redux-persist";
 import { teacherReducer } from "./teachers/slice.js";
 import { favoritesReducer } from "./favorites/slice.js";
-import authReducer from "./auth/slice.js";
+import { authReducer } from "./auth/slice.js";
 
 const persistConfig = {
   key: "root",

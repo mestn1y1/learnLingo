@@ -6,7 +6,8 @@ import styles from "./SignUp.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
+
 import { Button } from "../Button/Button.jsx";
 import { Icon } from "../Icons/Icons.jsx";
 const SignupSchema = Yup.object().shape({
@@ -48,12 +49,15 @@ export default function SignUp({ handleClose }) {
         createdAt: new Date().toISOString(),
       });
       await user.reload();
-      toast.success(`Welcome, ${name}! Your account has been created.`);
+      toast.success(`Welcome, ${name}! Your account has been created.`, {
+        autoClose: 2500,
+      });
       actions.resetForm();
       handleClose();
-
     } catch (error) {
-      toast.error("Apologies, an error occurred. Please try again later!");
+      toast.error("Apologies, an error occurred. Please try again later!", {
+        autoClose: 2500,
+      });
     }
   };
 

@@ -7,7 +7,8 @@ import {
   addFavoriteToDB,
 } from "../../redux/favorites/operations.js";
 import styles from "./TeacherCard.module.css";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
+
 import { selectFavorites } from "../../redux/selectors.js";
 import { ModalWrap } from "../ModalWrap/ModalWrap.jsx";
 import Booking from "../Booking/Booking.jsx";
@@ -24,12 +25,16 @@ export default function TeacherCard({ teacher }) {
   const isFavorite = favorites.includes(teacher.id);
 
   const handleBookingSubmit = (values) => {
-    toast.success("Your booking has been received! We will contact you soon.");
+    toast.success("Your booking has been received! We will contact you soon.", {
+      autoClose: 2500,
+    });
   };
 
   const onSwitchFavorite = async () => {
     if (!authUser) {
-      toast.error("At first, you must log in", {});
+      toast.warn("Please log in to add to your favorites.", {
+        autoClose: 2500,
+      });
       return;
     }
 
@@ -37,12 +42,16 @@ export default function TeacherCard({ teacher }) {
       dispatch(
         removeFavoriteFromDB({ userId: authUser.uid, teacherId: teacher.id })
       );
-      toast.success("Removed from favorites");
+      toast.warn("Removed from favorites", {
+        autoClose: 2500,
+      });
     } else {
       dispatch(
         addFavoriteToDB({ userId: authUser.uid, teacherId: teacher.id })
       );
-      toast.success("Added to favorites");
+      toast.success("Added to favorites", {
+        autoClose: 2500,
+      });
     }
   };
 

@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import { ModalWrap } from "../ModalWrap/ModalWrap";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
-import { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../../hooks/useAuth";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Loader from "../Loader/Loader";
@@ -54,7 +54,7 @@ export default function App() {
         {modalType === "register" && <SignUp handleClose={closeModal} />}
         {modalType === "login" && <SignIn handleClose={closeModal} />}
       </ModalWrap>
-      <Toaster position="top-right" />
+      <ToastContainer position="top-right" />
     </ThemeProvider>
   );
 }

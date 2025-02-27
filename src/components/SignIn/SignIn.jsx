@@ -7,7 +7,8 @@ import { Icon } from "../Icons/Icons.jsx";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
+
 import { Button } from "../Button/Button.jsx";
 
 const SigninSchema = Yup.object().shape({
@@ -37,12 +38,14 @@ export default function SignIn({ handleClose }) {
       const user = userCredential.user;
       const displayName = user.displayName || "User";
 
-      toast.success(`Welcome back, ${displayName}!`);
+      toast.success(`Welcome back, ${displayName}!`, {
+        autoClose: 2500,
+      });
       handleClose();
     } catch (error) {
-      toast.error(
-        error.message || "Invalid email or password. Please try again."
-      );
+      toast.error("Invalid email or password. Please try again.", {
+        autoClose: 2500,
+      });
     }
   };
 

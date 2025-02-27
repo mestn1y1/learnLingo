@@ -84,7 +84,14 @@
   background: transparent;
   display: flex;
   align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #121417;
+  gap: 8px;
 }
-.logoutBtn:hover {
-  color: #f4c550;
+
+.themeToggleBtn {
+  background: transparent;
+  border: none;
 }

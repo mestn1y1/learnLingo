@@ -11,6 +11,8 @@ import toast from "react-hot-toast";
 import { selectFavorites } from "../../redux/selectors.js";
 import { ModalWrap } from "../ModalWrap/ModalWrap.jsx";
 import Booking from "../Booking/Booking.jsx";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import { useAuth } from "../../hooks/useAuth.jsx";
 
 export default function TeacherCard({ teacher }) {
@@ -22,6 +24,8 @@ export default function TeacherCard({ teacher }) {
   const favorites = useSelector(selectFavorites);
   const authUser = useAuth();
   const isFavorite = favorites.includes(teacher.id);
+
+  const { theme } = useContext(ThemeContext);
 
   const handleBookingSubmit = (values) => {
     toast.success("Your booking has been received! We will contact you soon.");
@@ -138,7 +142,16 @@ export default function TeacherCard({ teacher }) {
           </>
         )}
 
-        <button className={styles.readMoreBtn} onClick={toggleExpanded}>
+        <button
+          className={styles.readMoreBtn}
+          onClick={toggleExpanded}
+          onMouseEnter={(e) => {
+            e.target.style.color = theme.primaryColor;
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.color = theme.textColor;
+          }}
+        >
           {isExpanded ? "Hide" : "Read more"}
         </button>
 

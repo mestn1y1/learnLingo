@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import styles from "./Stats.module.css";
+
 export default function Stats() {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <ul className={styles.statsList}>
+    <ul className={styles.statsList} style={{ borderColor: theme.bgColor }}>
       <li className={styles.statsListItem}>
         <h3>32,000 +</h3>
         <p>Experienced tutors</p>

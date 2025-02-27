@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import { useAuth } from "../../hooks/useAuth";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Loader from "../Loader/Loader";
+import { ThemeProvider } from "../context/ThemeProvider";
 
 const Home = lazy(() => import("../../pages/Home/Home"));
 const Teachers = lazy(() => import("../../pages/Teachers/Teachers"));
@@ -30,8 +31,9 @@ export default function App() {
   };
 
   const authUser = useAuth();
+
   return (
-    <>
+    <ThemeProvider>
       <Header openModal={openModal} />
       <Suspense fallback={<Loader />}>
         <Routes>
@@ -51,8 +53,8 @@ export default function App() {
       <ModalWrap isOpen={isModalOpen} handleClose={closeModal}>
         {modalType === "register" && <SignUp handleClose={closeModal} />}
         {modalType === "login" && <SignIn handleClose={closeModal} />}
-      </ModalWrap>{" "}
+      </ModalWrap>
       <Toaster position="top-right" />
-    </>
+    </ThemeProvider>
   );
 }

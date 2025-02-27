@@ -29,9 +29,15 @@ export default function SignIn({ handleClose }) {
     const { email, password } = values;
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      const displayName = user.displayName || "User";
 
-      toast.success("Successfully signed in!");
+      toast.success(`Welcome back, ${displayName}!`);
       handleClose();
     } catch (error) {
       toast.error(
@@ -60,28 +66,21 @@ export default function SignIn({ handleClose }) {
       >
         {() => (
           <Form>
-            <div>
-              <label htmlFor="email"></label>
-              <ErrorMessage
-                name="email"
-                component="span"
-                className={styles.error}
-              />
+            <div className={styles.inputBlock}>
               <Field
                 name="email"
                 type="email"
                 className={styles.input}
                 placeholder="Email"
               />
-            </div>
-
-            <div className={styles.passwordContainer}>
-              <label htmlFor="password"></label>
               <ErrorMessage
-                name="password"
+                name="email"
                 component="span"
                 className={styles.error}
               />
+            </div>
+
+            <div className={styles.passwordContainer}>
               <div className={styles.inputWrapper}>
                 <Field
                   name="password"
@@ -97,6 +96,11 @@ export default function SignIn({ handleClose }) {
                   {showPassword ? <FaEye /> : <FaEyeSlash />}
                 </button>
               </div>
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={styles.error}
+              />
             </div>
 
             <Button text="Sign In" className={styles.signInBtn} type="submit" />

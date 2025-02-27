@@ -13,11 +13,7 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.wrap}>
           <h1 className={styles.title}>
-            Unlock your potential with the best{" "}
-            <span style={{ backgroundColor: theme.primaryColor }}>
-              language
-            </span>{" "}
-            tutors
+            Unlock your potential with the best <span>language</span> tutors
           </h1>
           <p className={styles.description}>
             Embark on an Exciting Language Journey with Expert Language Tutors:

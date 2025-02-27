@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import { auth, db } from "../../fireBase/firebase-config.js";
 import styles from "./SignUp.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { Button } from "../Button/Button.jsx";
 import { Icon } from "../Icons/Icons.jsx";
 const SignupSchema = Yup.object().shape({
@@ -38,18 +38,21 @@ export default function SignUp({ handleClose }) {
         password
       );
       const user = userCredential.user;
+      await updateProfile(user, {
+        displayName: name,
+      });
 
       await set(ref(db, `users/${user.uid}`), {
         name,
         email,
         createdAt: new Date().toISOString(),
       });
-
-      toast.success("User created successfully!");
+      await user.reload();
+      toast.success(`Welcome, ${name}! Your account has been created.`);
       actions.resetForm();
       handleClose();
+
     } catch (error) {
-      console.error("Error creating user:", error);
       toast.error("Apologies, an error occurred. Please try again later!");
     }
   };
@@ -75,43 +78,35 @@ export default function SignUp({ handleClose }) {
       >
         {() => (
           <Form>
-            <div>
-              <label htmlFor="name"></label>
-              <ErrorMessage
-                name="name"
-                component="span"
-                className={styles.error}
-              />
+            <div className={styles.inputBlock}>
               <Field
                 name="name"
                 type="text"
                 className={styles.input}
                 placeholder="Name"
               />
-            </div>
-
-            <div>
-              <label htmlFor="email"></label>
               <ErrorMessage
-                name="email"
+                name="name"
                 component="span"
                 className={styles.error}
               />
+            </div>
+
+            <div className={styles.inputBlock}>
               <Field
                 name="email"
                 type="email"
                 className={styles.input}
                 placeholder="Email"
               />
-            </div>
-
-            <div className={styles.passwordContainer}>
-              <label htmlFor="password"></label>
               <ErrorMessage
-                name="password"
+                name="email"
                 component="span"
                 className={styles.error}
               />
+            </div>
+
+            <div className={styles.passwordContainer}>
               <div className={styles.inputWrapper}>
                 <Field
                   name="password"
@@ -127,13 +122,17 @@ export default function SignUp({ handleClose }) {
                   {showPassword ? <FaEye /> : <FaEyeSlash />}
                 </button>
               </div>
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={styles.error}
+              />
             </div>
 
             <Button text="SignUp" type="submit" className={styles.signUpBtn} />
           </Form>
         )}
       </Formik>
-      <Toaster />
     </div>
   );
 }

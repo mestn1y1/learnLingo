@@ -1,6 +1,6 @@
 .avatarImgWrap {
   padding: 10px;
-  border: 3px solid #fbe9ba;
+  border: 3px solid var(--primary-color);
   border-radius: 50%;
   flex-shrink: 0;
   width: 120px;
@@ -102,15 +102,16 @@
   height: 26px;
   fill: transparent;
   stroke: black;
+  transition: 0.2s ease-in-out;
 }
 
 .iconHeart:hover {
-  stroke: #f4c550;
+  stroke: var(--bg-color);
 }
 
 .iconHeartActive {
   stroke: none;
-  fill: #f4c550;
+  fill: var(--bg-color);
   width: 26px;
   height: 26px;
 }
@@ -134,10 +135,11 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #121417;
+  transition: 0.2s ease-in-out;
 }
 
 .readMoreBtn:hover {
-  color: #f4c550;
+  color: var(--bg-color);
 }
 
 .languageLevelList {

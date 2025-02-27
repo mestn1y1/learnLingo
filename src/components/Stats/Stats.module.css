@@ -1,6 +1,6 @@
 .statsList {
   display: flex;
-  border: 2.5px dashed #f4c550;
+  border: 2.5px dashed var(--bg-color);
   border-radius: 30px;
   width: 100%;
   height: 116px;

@@ -64,7 +64,7 @@ export default function Booking({ onSubmit, teacher, handleClose }) {
             <ErrorMessage
               name="reason"
               component="div"
-              className={styles.error}
+              className={styles.errorRadio}
             />
             {[
               "Career and business",
@@ -85,45 +85,45 @@ export default function Booking({ onSubmit, teacher, handleClose }) {
             ))}
           </div>
 
-          <div>
-            <ErrorMessage
-              name="fullName"
-              component="div"
-              className={styles.error}
-            />
+          <div className={styles.wrapInputBlock}>
             <Field
               type="text"
               name="fullName"
               placeholder="Full Name"
               className={styles.input}
             />
-          </div>
-
-          <div>
             <ErrorMessage
-              name="email"
+              name="fullName"
               component="div"
               className={styles.error}
             />
+          </div>
+
+          <div className={styles.wrapInputBlock}>
             <Field
               type="email"
               name="email"
               placeholder="Email"
               className={styles.input}
             />
-          </div>
-
-          <div>
             <ErrorMessage
-              name="phone"
+              name="email"
               component="div"
               className={styles.error}
             />
+          </div>
+
+          <div className={styles.wrapInputBlock}>
             <Field
               type="tel"
               name="phone"
               placeholder="Phone number"
               className={styles.input}
+            />
+            <ErrorMessage
+              name="phone"
+              component="div"
+              className={styles.error}
             />
           </div>
 

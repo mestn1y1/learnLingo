@@ -6,9 +6,10 @@
   padding: 64px;
   position: relative;
 }
+
 .signUpBtn {
   width: 438px;
-  margin-top: 22px;
+  margin-top: 40px;
 }
 
 .closeBtn {
@@ -18,11 +19,17 @@
   top: 20px;
   right: 20px;
 }
+
 .iconClose {
   width: 32px;
   height: 32px;
   fill: none;
   stroke: #000;
+  transition: 0.2s ease-in-out;
+}
+
+.iconClose:hover {
+  stroke: var(--bg-color);
 }
 
 .title {
@@ -50,6 +57,15 @@
   outline: none;
   margin-bottom: 18px;
   border-radius: 12px;
+  transition: 0.2s ease-in-out;
+}
+
+.input:hover {
+  border: 1px solid var(--bg-color);
+}
+
+.input:focus {
+  border: 1px solid var(--bg-color);
 }
 
 input::placeholder {
@@ -85,6 +101,24 @@ input::placeholder {
   color: #333;
 }
 
+.inputLabel {
+  font-size: 14px;
+  color: #121417;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.inputBlock {
+  width: 100%;
+  position: relative;
+}
+
 .error {
   color: red;
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0 10px;
+  width: 100%;
 }

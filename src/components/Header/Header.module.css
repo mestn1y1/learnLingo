@@ -31,11 +31,15 @@
   font-size: 16px;
   line-height: 125%;
   color: #121417;
+  transition: 0.2s ease-in-out;
 }
 
-.link:hover,
+.link:hover {
+  color: var(--primary-color);
+}
+
 .activeLink {
-  color: #f4c550;
+  color: var(--bg-color);
 }
 
 .auth {
@@ -58,11 +62,13 @@
   font-size: 16px;
   line-height: 125%;
   color: #fff;
+  transition: 0.2s ease-in-out;
 }
 
 .authBtn:hover {
-  color: #f4c550;
+  color: var(--primary-color);
 }
+
 .loginBtn {
   border: none;
   background: transparent;
@@ -73,10 +79,11 @@
   line-height: 125%;
   color: #121417;
   gap: 8px;
+  transition: 0.2s ease-in-out;
 }
 
 .loginBtn:hover {
-  color: #f4c550;
+  color: var(--bg-color);
 }
 
 .logoutBtn {
@@ -89,9 +96,16 @@
   line-height: 125%;
   color: #121417;
   gap: 8px;
+  transition: 0.2s ease-in-out;
+}
+.logoutBtn:hover {
+  color: var(--bg-color);
 }
 
 .themeToggleBtn {
   background: transparent;
   border: none;
+}
+.iconPalete {
+  width: 24px;
 }

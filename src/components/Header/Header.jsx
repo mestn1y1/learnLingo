@@ -1,4 +1,3 @@
-import { GiPalette } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
 import { CiLogin, CiLogout } from "react-icons/ci";
 import { useContext } from "react";
@@ -10,7 +9,7 @@ import { auth } from "../../fireBase/firebase-config";
 import { useAuth } from "../../hooks/useAuth";
 
 export default function Header({ openModal }) {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
   const handleLogOUt = () => {
     signOut(auth);
   };
@@ -32,9 +31,6 @@ export default function Header({ openModal }) {
               className={({ isActive }) =>
                 clsx(styles.link, { [styles.activeLink]: isActive })
               }
-              style={({ isActive }) => ({
-                color: isActive ? theme.bgColor : theme.textColor,
-              })}
             >
               Home
             </NavLink>
@@ -45,9 +41,6 @@ export default function Header({ openModal }) {
               className={({ isActive }) =>
                 clsx(styles.link, { [styles.activeLink]: isActive })
               }
-              style={({ isActive }) => ({
-                color: isActive ? theme.bgColor : theme.textColor,
-              })}
             >
               Teachers
             </NavLink>
@@ -59,9 +52,6 @@ export default function Header({ openModal }) {
                 className={({ isActive }) =>
                   clsx(styles.link, { [styles.activeLink]: isActive })
                 }
-                style={({ isActive }) => ({
-                  color: isActive ? theme.bgColor : theme.textColor,
-                })}
               >
                 Favorite
               </NavLink>
@@ -72,7 +62,7 @@ export default function Header({ openModal }) {
 
       <ul className={styles.auth}>
         <button onClick={toggleTheme} className={styles.themeToggleBtn}>
-          <GiPalette size="24" />
+          <img src="/images/palette.svg" className={styles.iconPalete} />
         </button>
         {!authUser ? (
           <>
@@ -80,15 +70,6 @@ export default function Header({ openModal }) {
               <button
                 className={styles.loginBtn}
                 onClick={() => openModal("login")}
-                style={{
-                  color: theme.textColor,
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = theme.bgColor;
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = theme.textColor;
-                }}
               >
                 <CiLogin size={20} />
                 Log in
@@ -98,12 +79,6 @@ export default function Header({ openModal }) {
               <button
                 className={styles.authBtn}
                 onClick={() => openModal("register")}
-                onMouseEnter={(e) => {
-                  e.target.style.color = theme.primaryColor;
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = "white";
-                }}
               >
                 Registration
               </button>
@@ -111,16 +86,7 @@ export default function Header({ openModal }) {
           </>
         ) : (
           <li>
-            <button
-              onClick={handleLogOUt}
-              className={styles.logoutBtn}
-              onMouseEnter={(e) => {
-                e.target.style.color = theme.bgColor;
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.color = theme.textColor;
-              }}
-            >
+            <button onClick={handleLogOUt} className={styles.logoutBtn}>
               <CiLogout size={20} />
               Log out
             </button>

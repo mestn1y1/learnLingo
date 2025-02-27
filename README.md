@@ -1,6 +1,6 @@
 # LearnLingo
 
-✨ **LearnLingo** is an interactive language learning platform designed to help users learn new languages through various resources, including teachers and their lessons. The website offers features like signing up, logging in, and marking teachers as favorites.
+✨ **LearnLingo** is an interactive language learning platform designed to help users learn new languages through various resources, including teachers and their lessons. The website offers features like signing up, logging in, marking teachers as favorites, and switching between themes.
 
 ---
 
@@ -10,6 +10,7 @@
 - **Teachers Page**: Allows users to browse and view information about available teachers.
 - **Favorites Page**: A private page where users can add their favorite teachers to a list and access them later.
 - **Authentication**: Users can sign up, log in, and log out. The authentication state is maintained across sessions using Firebase.
+- **Theme Switching**: Users can switch between different themes (e.g., light, dark, or custom themes) to personalize their experience.
 
 ---
 
@@ -23,8 +24,7 @@
 - **Redux Persist**: To persist the Redux state (such as authentication) in the browser’s local storage.
 - **React Icons**: For scalable vector icons, such as the login/logout icons.
 - **CSS Modules**: Scoped styles for better organization and modularity of CSS.
-
----
+- **Context API**: Used for managing the theme state and providing theme-related data to components.
 
 ### Authentication & Database:
 
@@ -43,5 +43,18 @@
 - **Home Page**: Navigate to the homepage to explore general information and quick links to the Teachers and Favorites pages.
 - **Teachers Page**: Browse available teachers, their details, and choose to add them to your favorites.
 - **Favorites Page**: After logging in, you can access your favorite teachers on this private page.
+- **Theme Switching**: Click the theme toggle button (usually represented by a palette icon) to switch between different themes. The selected theme will be applied across the entire application.
 
 ---
+
+## 🎨 Theme Switching
+
+The application supports dynamic theme switching, allowing users to choose from multiple themes. The theme context is managed using React's Context API, and the selected theme is applied to all components, ensuring a consistent look and feel.
+
+---
+
+### How It Works:
+
+- **Theme Context**: A context provider (`ThemeProvider`) wraps the application, providing theme-related data (colors, images, etc.) to all components.
+- **Theme Toggle**: A button in the header allows users to switch between themes. Each theme has predefined colors for backgrounds, text, and other UI elements.
+- **Dynamic Styling**: Components use the current theme's colors and styles, which are dynamically applied based on the selected theme.

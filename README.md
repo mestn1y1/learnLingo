@@ -8,7 +8,7 @@
 
 - **Home Page**: Displays the main content and offers easy navigation to other sections.
 - **Teachers Page**: Allows users to browse and view information about available teachers.
-- **Favorites Page**: A private page where users can add their favorite teachers to a list and access them later.
+- **Favorites Page**: A private page where users can add their favorite teachers to a list and access them later. **Favorites are stored in Firebase**, ensuring they are preserved across sessions.
 - **Authentication**: Users can sign up, log in, and log out. The authentication state is maintained across sessions using Firebase.
 - **Theme Switching**: Users can switch between different themes (e.g., light, dark, or custom themes) to personalize their experience.
 
@@ -28,7 +28,8 @@
 
 ### Authentication & Database:
 
-- **Firebase**: Firebase Authentication is used for handling user authentication (sign-up, login, logout). User data is stored in Firebase Authentication, while information about teachers and their details is stored in Firebase's Firestore database, ensuring that data is persisted across sessions.
+- **Firebase**: Firebase Authentication is used for handling user authentication (sign-up, login, logout). User data is stored in Firebase Authentication, while information about teachers and their details is stored in Firebase's Firestore database.
+- **Favorites are also stored in Firebase**, ensuring that data is persisted across sessions.
 
 ---
 

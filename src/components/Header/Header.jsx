@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { CiLogin, CiLogout } from "react-icons/ci";
+import { toast } from "react-toastify";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import styles from "./Header.module.css";
@@ -10,11 +11,14 @@ import { useAuth } from "../../hooks/useAuth";
 
 export default function Header({ openModal }) {
   const { toggleTheme } = useContext(ThemeContext);
+  const authUser = useAuth();
   const handleLogOUt = () => {
     signOut(auth);
-  };
 
-  const authUser = useAuth();
+    toast.success(`Bye, see you later, ${authUser.displayName || "User"}!`, {
+      autoClose: 2500,
+    });
+  };
 
   return (
     <header className={styles.header}>

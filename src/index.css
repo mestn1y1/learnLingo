@@ -60,6 +60,7 @@ button {
 
 input {
   font-family: inherit;
+  outline: none;
 }
 
 #root {
